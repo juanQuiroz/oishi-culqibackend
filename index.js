@@ -19,9 +19,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.get("*/createcharge", (req, res) => {
+app.get("*/", (req, res) => {
   res.json({
-    message: "it works fine !",
+    message: "it works fine update!",
   });
 });
 
@@ -58,14 +58,18 @@ app.post("*/createcharge", async (req, res) => {
     console.log("Charge =>", body);
   });
 });
-
 // =================== CREAR SOLO CARGO  =====================
 app.post("*/createonlycharge", async (req, res) => {
   const options = {
     method: "POST",
     url: "https://api.culqi.com/v2/charges",
     headers: {
-      Authorization: "Bearer sk_live_d95b86b4a9b8bd30",
+      Authorization:
+        req.body.localId === 1
+          ? "Bearer sk_test_bef6111abb321579"
+          : req.body.localId === 2
+          ? "Bearer sk_test_7a9a824409744b49"
+          : "Bearer sk_test_075992eb6c1d1fb1",
       "content-type": "application/json",
     },
     body: req.body,
