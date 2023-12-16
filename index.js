@@ -50,7 +50,14 @@ app.post("*/createcharge", async (req, res) => {
     const options1 = {
       method: "POST",
       url: `https://api.culqi.com/v2/charges/${body.id}/capture`,
-      headers: { Authorization: "Bearer sk_live_d95b86b4a9b8bd30" },
+      headers: {
+        Authorization:
+          req.body.localId === 1
+            ? "Bearer sk_test_bef6111abb321579"
+            : req.body.localId === 2
+            ? "Bearer sk_test_7a9a824409744b49"
+            : "Bearer sk_test_075992eb6c1d1fb1",
+      },
     };
 
     await request(options1, function (error1, resp, body1) {
