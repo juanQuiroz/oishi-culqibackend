@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.get("*/createcharge", (req, res) => {
   res.json({
-    message: "it works fine !",
+    message: "it works fine ! UPDATED",
   });
 });
 
