@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "build": "react-scripts build",
-    "start": "node build/index.js"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "license": "MIT",
   "dependencies": {
