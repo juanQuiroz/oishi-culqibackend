@@ -19,9 +19,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.get("/test", (req, res) => {
+app.get("*/createcharge", (req, res) => {
   res.json({
-    message: "it works fine update!",
+    message: "it works fine !",
   });
 });
 
@@ -31,12 +31,7 @@ app.post("*/createcharge", async (req, res) => {
     method: "POST",
     url: "https://api.culqi.com/v2/charges",
     headers: {
-      Authorization:
-        req.body.localId === 1
-          ? "Bearer sk_test_bef6111abb321579"
-          : req.body.localId === 2
-          ? "Bearer sk_test_7a9a824409744b49"
-          : "Bearer sk_test_075992eb6c1d1fb1",
+      Authorization: "Bearer sk_live_d95b86b4a9b8bd30",
       "content-type": "application/json",
     },
     body: req.body,
@@ -50,14 +45,7 @@ app.post("*/createcharge", async (req, res) => {
     const options1 = {
       method: "POST",
       url: `https://api.culqi.com/v2/charges/${body.id}/capture`,
-      headers: {
-        Authorization:
-          req.body.localId === 1
-            ? "Bearer sk_test_bef6111abb321579"
-            : req.body.localId === 2
-            ? "Bearer sk_test_7a9a824409744b49"
-            : "Bearer sk_test_075992eb6c1d1fb1",
-      },
+      headers: { Authorization: "Bearer sk_live_d95b86b4a9b8bd30" },
     };
 
     await request(options1, function (error1, resp, body1) {
@@ -70,18 +58,14 @@ app.post("*/createcharge", async (req, res) => {
     console.log("Charge =>", body);
   });
 });
+
 // =================== CREAR SOLO CARGO  =====================
 app.post("*/createonlycharge", async (req, res) => {
   const options = {
     method: "POST",
     url: "https://api.culqi.com/v2/charges",
     headers: {
-      Authorization:
-        req.body.localId === 1
-          ? "Bearer sk_test_bef6111abb321579"
-          : req.body.localId === 2
-          ? "Bearer sk_test_7a9a824409744b49"
-          : "Bearer sk_test_075992eb6c1d1fb1",
+      Authorization: "Bearer sk_live_d95b86b4a9b8bd30",
       "content-type": "application/json",
     },
     body: req.body,
