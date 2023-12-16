@@ -88,9 +88,9 @@ app.post("*/createonlychargeTest", async (req, res) => {
     url: "https://api.culqi.com/v2/charges",
     headers: {
       Authorization:
-        req.body.localId === 1
+        req.body.localId == 1
           ? "Bearer sk_test_bef6111abb321579"
-          : req.body.localId === 2
+          : req.body.localId == 2
           ? "Bearer sk_test_075992eb6c1d1fb1"
           : "Bearer sk_test_7a9a824409744b49",
       "content-type": "application/json",
