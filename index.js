@@ -91,8 +91,8 @@ app.post("*/createonlychargeTest", async (req, res) => {
         req.body.localId === 1
           ? "Bearer sk_test_bef6111abb321579"
           : req.body.localId === 2
-          ? "Bearer sk_test_7a9a824409744b49"
-          : "Bearer sk_test_075992eb6c1d1fb1",
+          ? "Bearer sk_test_075992eb6c1d1fb1"
+          : "Bearer sk_test_7a9a824409744b49",
       "content-type": "application/json",
     },
     body: req.body,
