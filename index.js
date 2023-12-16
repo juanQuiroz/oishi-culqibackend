@@ -26,7 +26,7 @@ app.get("*/createcharge", (req, res) => {
 });
 
 // =================== CREAR CARGO y CAPTURAR =====================
-app.post("*/createcharge/", async (req, res) => {
+app.post("*/createcharge", async (req, res) => {
   const options = {
     method: "POST",
     url: "https://api.culqi.com/v2/charges",
@@ -59,37 +59,27 @@ app.post("*/createcharge/", async (req, res) => {
   });
 });
 
-dataPedido.local_id == 1
-  ? "Cañete"
-  : dataPedido.local_id == 2
-  ? "Ica"
-  : "Chincha",
-  // =================== CREAR SOLO CARGO  =====================
-  app.post("*/createonlycharge", async (req, res) => {
-    const options = {
-      method: "POST",
-      url: "https://api.culqi.com/v2/charges",
-      headers: {
-        Authorization:
-          req.body.localId === 1
-            ? "Bearer sk_test_bef6111abb321579"
-            : req.body.localId === 2
-            ? "Bearer sk_test_7a9a824409744b49"
-            : "Bearer sk_test_075992eb6c1d1fb1",
-        "content-type": "application/json",
-      },
-      body: req.body,
-      json: true,
-    };
+// =================== CREAR SOLO CARGO  =====================
+app.post("*/createonlycharge", async (req, res) => {
+  const options = {
+    method: "POST",
+    url: "https://api.culqi.com/v2/charges",
+    headers: {
+      Authorization: "Bearer sk_live_d95b86b4a9b8bd30",
+      "content-type": "application/json",
+    },
+    body: req.body,
+    json: true,
+  };
 
-    await request(options, async function (error, response, body) {
-      if (error) throw new Error(error);
-      // res.status(200).send(response);
+  await request(options, async function (error, response, body) {
+    if (error) throw new Error(error);
+    // res.status(200).send(response);
 
-      res.status(200).json({ response });
-      console.log("Charge =>", body);
-    });
+    res.status(200).json({ response });
+    console.log("Charge =>", body);
   });
+});
 
 //configure port
 app.set("port", process.env.PORT || 3000);
